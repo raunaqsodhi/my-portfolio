@@ -3,95 +3,430 @@
 <head>
   <meta charset="UTF-8">
   <title>My Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; }
-    header { background: #222; color: #fff; padding: 20px 0; }
-    nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; }
-    nav a { color: #fff; text-decoration: none; }
-    .hero { background: #f4f4f4; padding: 60px 20px; text-align: center; }
-    section { padding: 40px 20px; }
-    .skills-list { display: flex; flex-wrap: wrap; gap: 15px; }
-    .skill { background: #e0e0e0; padding: 10px 20px; border-radius: 5px; }
+    :root {
+      --primary: #2C3E50;
+      --accent: #2980B9;
+      --background: #F5F7FA;
+      --text: #222;
+      --white: #fff;
+      --card: #f8fafc;
+      --dark-bg: #181c23;
+      --dark-card: #23272f;
+      --dark-text: #f5f7fa;
+      --dark-accent: #4ea1f7;
+    }
+    html, body {
+      height: 100%;
+      width: 100vw;
+      min-width: 100vw;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      transition: background 0.4s, color 0.4s;
+      min-height: 100vh;
+      min-width: 100vw;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+    }
+    .sidebar {
+      width: 220px;
+      background: var(--primary);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px 0 0 0;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 20;
+    }
+    .sidebar h1 {
+      font-size: 1.5em;
+      margin: 0 0 32px 32px;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+    .sidebar nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .sidebar nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1em;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+      position: relative;
+      outline: none;
+      animation: linkPop 0.7s;
+      display: block;
+      cursor: pointer;
+    }
+    .sidebar nav a:hover, .sidebar nav a:focus {
+      background: var(--accent);
+      color: #fff;
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 4px 16px rgba(41,128,185,0.10);
+      animation: linkWobble 0.4s;
+    }
+    .sidebar nav a:active {
+      background: #1a5276;
+      transform: scale(0.98);
+    }
+    @keyframes linkPop {
+      0% { opacity: 0; transform: scale(0.7);}
+      100% { opacity: 1; transform: scale(1);}
+    }
+    @keyframes linkWobble {
+      0% { transform: scale(1.08) rotate(-2deg);}
+      50% { transform: scale(1.14) rotate(2deg);}
+      100% { transform: scale(1.08) rotate(-2deg);}
+    }
+    .dark .sidebar {
+      background: var(--dark-card);
+      color: var(--dark-text);
+    }
+    .dark .sidebar nav a {
+      color: var(--dark-text);
+    }
+    .dark .sidebar nav a:hover, .dark .sidebar nav a:focus {
+      background: var(--dark-accent);
+      color: #222;
+    }
+    .dark .sidebar nav a:active {
+      background: #222;
+      color: var(--dark-accent);
+    }
+    .dark-toggle {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      font-size: 1.2em;
+      margin: 32px 0 0 32px;
+      transition: background 0.3s;
+    }
+    .dark .dark-toggle {
+      background: var(--dark-accent);
+      color: #222;
+    }
+    #main-content {
+      flex: 1 0 auto;
+      width: 100vw;
+      max-width: 1200px;
+      margin-left: 220px;
+      box-sizing: border-box;
+      padding: 0 0 40px 0;
+    }
+    section {
+      display: none;
+      padding: 40px 32px 0 32px;
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(44,62,80,0.07);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInSlide 0.8s forwards;
+      animation-delay: 0.2s;
+      transition: background 0.4s, color 0.4s;
+      margin-bottom: 32px;
+    }
+    section.active {
+      display: block;
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      animation: fadeInSlide 0.8s forwards;
+    }
+    @keyframes fadeInSlide {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    h2, h3, h4 {
+      color: var(--primary);
+      margin-top: 0;
+      transition: color 0.4s;
+      animation: headingFade 1.2s;
+    }
+    @keyframes headingFade {
+      0% { opacity: 0; letter-spacing: 0.5em; }
+      100% { opacity: 1; letter-spacing: normal; }
+    }
+    body.dark h2, body.dark h3, body.dark h4 {
+      color: var(--dark-accent);
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .skill {
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(41,128,185,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .skill:hover {
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 4px 16px rgba(41,128,185,0.15);
+    }
+    .projects-list {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .project-card {
+      background: var(--card);
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+      padding: 24px;
+      flex: 1 1 300px;
+      min-width: 250px;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.4s, color 0.4s;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInSlide 0.8s forwards;
+      animation-delay: 0.4s;
+    }
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 24px rgba(41,128,185,0.15);
+    }
+    body.dark .project-card {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+    .contact-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      margin-top: 16px;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1em;
+      transition: color 0.3s, transform 0.2s;
+      animation: linkPop 0.7s;
+    }
+    .contact-link:hover {
+      color: var(--primary);
+      transform: translateY(-2px) scale(1.08);
+      animation: linkWobble 0.4s;
+    }
+    body.dark .contact-link {
+      color: var(--dark-accent);
+    }
+    ul {
+      padding-left: 20px;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    @media (max-width: 900px) {
+      .sidebar {
+        position: static;
+        width: 100vw;
+        flex-direction: row;
+        align-items: center;
+        padding: 16px 0 0 0;
+        min-height: unset;
+      }
+      .sidebar h1 {
+        margin: 0 16px 0 16px;
+      }
+      .sidebar nav ul {
+        flex-direction: row;
+        gap: 12px;
+        padding: 0 0 0 16px;
+      }
+      #main-content {
+        margin-left: 0;
+        padding: 0 0 40px 0;
+      }
+      section {
+        padding: 32px 8px 0 8px;
+      }
+    }
   </style>
+  <script>
+    // SPA-like navigation for sections
+    document.addEventListener('DOMContentLoaded', function() {
+      function showSection(id) {
+        document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+        const section = document.getElementById(id);
+        if (section) section.classList.add('active');
+      }
+      // Initial section
+      let hash = window.location.hash.replace('#', '') || 'home';
+      showSection(hash);
+
+      // Nav click
+      document.querySelectorAll('.sidebar nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const id = this.getAttribute('href').replace('#', '');
+          showSection(id);
+          history.replaceState(null, '', '#' + id);
+        });
+      });
+
+      // Show section on hash change (back/forward)
+      window.addEventListener('hashchange', () => {
+        let hash = window.location.hash.replace('#', '') || 'home';
+        showSection(hash);
+      });
+
+      // Dark mode toggle
+      const toggle = document.getElementById('dark-toggle');
+      toggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark');
+        localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+      });
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+      }
+    });
+  </script>
 </head>
 <body>
-  <header>
-    <div style="max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-      <h1>Raunaq Sodhi</h1>
-      <nav>
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About Me</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#resume">Resume</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <section class="hero" id="hero">
-    <h2>Welcome to My Portfolio</h2>
-    <p>I'm Raunaq, a passionate data scientist ready to solve real-world problems with data.</p>
-  </section>
-
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I am a data science enthusiast with experience in analyzing data, building models, and delivering actionable insights. I enjoy learning new technologies and applying them to challenging problems.
-    </p>
-  </section>
-
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills-list">
-      <div class="skill">Python</div>
-      <div class="skill">Pandas</div>
-      <div class="skill">NumPy</div>
-      <div class="skill">Scikit-learn</div>
-      <div class="skill">Data Visualization</div>
-      <div class="skill">Machine Learning</div>
-      <div class="skill">SQL</div>
-      <div class="skill">Statistics</div>
-    </div>
-  </section>
-
-  <section id="resume">
-    <h2>Resume</h2>
-    <h3>RAUNAQ SODHI</h3>
-    <h4>Summary</h4>
-    <ul>
-      <li>Working as a Sales Associate to provide customer service and shopping experience, managing shipment and backstocking, contributing to team efficiency, and driving sales through loyalty sign-ups while maintaining compliance with company policies and standards</li>
-      <li>Personal Stylish who understands and curates a customer’s specific shopping needs</li>
-      <li>Programming experience in Python, C, C++ and Java</li>
-      <li>Arduino Raspberry Pi, Embedded C for electronics and robotics projects</li>
-      <li>Pursuing an Online Bachelors in Computer Applications from Manipal University</li>
-      <li>Completed IBM’s Cloud Computing and Trinity Grade 6 Plectrum Certifications</li>
-      <li>Strong Communication, Team player, Agile, Energetic and Self-motivated</li>
-    </ul>
-    <h4>Education & Certifications</h4>
-    <ul>
-      <li><strong>Bachelor in Computer Applications, Manipal University</strong> July 2023 - Present<br>
-        C and C++ programming, Fundamentals of IT and Mathematics, Data Structures, Networking, DBMS, Operating Systems, Java, AI/ML
-      </li>
-      <li><strong>IBDP, Symbiosis International School</strong> June 2020 - July 2022<br>
-        Computer Science, Mathematics, Physics and Economics
-      </li>
-    </ul>
-    <h4>Experience</h4>
-    <ul>
-      <li><strong>H&M and Banana Republic, Las Vegas</strong> June 2024 – Present<br>
-        Delivered exceptional customer service to drive sales, enhance the shopping experience, and increase loyalty sign-ups<br>
-        Led and supported a high-performing team while ensuring compliance with company policies and legal standards<br>
-        Maintained an engaging retail environment through customer assistance and garment care<br>
-        Developed strong communication and sales skills in a luxury retail setting<br>
-        Built personal relationships with customers, providing tailored assistance to enhance satisfaction and loyalty
-      </li>
-    </ul>
-    <h4>Projects</h4>
-    <ul>
-      <li><strong>Stock Screener using Python:</strong> Designed and implemented an intraday stock scanner that analyzes volume, price, and RSI indicators to generate a ranked list of top stocks</li>
-      <li><strong>Robotics Projects using Arduino:</strong> Designed and built an autonomous robot with capabilities including line following, obstacle detection, object manipulation, and traffic light-based navigation.</li>
-    </ul>
-  </section>
+  <aside class="sidebar">
+    <h1>Raunaq Sodhi</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button id="dark-toggle" class="dark-toggle" title="Toggle dark mode">🌙</button>
+  </aside>
+  <div id="main-content">
+    <section id="home">
+      <h2>Welcome to My Portfolio</h2>
+      <p>I'm Raunaq, a passionate data scientist ready to solve real-world problems with data.</p>
+    </section>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a data science enthusiast with experience in analyzing data, building models, and delivering actionable insights. I enjoy learning new technologies and applying them to challenging problems.
+      </p>
+    </section>
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <div class="skill">Python</div>
+        <div class="skill">Pandas</div>
+        <div class="skill">NumPy</div>
+        <div class="skill">Scikit-learn</div>
+        <div class="skill">Data Visualization</div>
+        <div class="skill">Machine Learning</div>
+        <div class="skill">SQL</div>
+        <div class="skill">Statistics</div>
+      </div>
+    </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-list">
+        <div class="project-card">
+          <h3>Stock Screener using Python</h3>
+          <p>Designed and implemented an intraday stock scanner that analyzes volume, price, and RSI indicators to generate a ranked list of top stocks.</p>
+        </div>
+        <div class="project-card">
+          <h3>Robotics Projects using Arduino</h3>
+          <p>Designed and built an autonomous robot with line following, obstacle detection, object manipulation, and traffic light-based navigation.</p>
+        </div>
+      </div>
+    </section>
+    <section id="resume">
+      <h2>Resume</h2>
+      <h3>RAUNAQ SODHI</h3>
+      <h4>Summary</h4>
+      <ul>
+        <li>Working as a Sales Associate to provide customer service and shopping experience, managing shipment and backstocking, contributing to team efficiency, and driving sales through loyalty sign-ups while maintaining compliance with company policies and standards</li>
+        <li>Personal Stylish who understands and curates a customer’s specific shopping needs</li>
+        <li>Programming experience in Python, C, C++ and Java</li>
+        <li>Arduino Raspberry Pi, Embedded C for electronics and robotics projects</li>
+        <li>Pursuing an Online Bachelors in Computer Applications from Manipal University</li>
+        <li>Completed IBM’s Cloud Computing and Trinity Grade 6 Plectrum Certifications</li>
+        <li>Strong Communication, Team player, Agile, Energetic and Self-motivated</li>
+      </ul>
+      <h4>Education & Certifications</h4>
+      <ul>
+        <li><strong>Bachelor in Computer Applications, Manipal University</strong> July 2023 - Present<br>
+          C and C++ programming, Fundamentals of IT and Mathematics, Data Structures, Networking, DBMS, Operating Systems, Java, AI/ML
+        </li>
+        <li><strong>IBDP, Symbiosis International School</strong> June 2020 - July 2022<br>
+          Computer Science, Mathematics, Physics and Economics
+        </li>
+      </ul>
+      <h4>Experience</h4>
+      <ul>
+        <li><strong>H&M and Banana Republic, Las Vegas</strong> June 2024 – Present<br>
+          Delivered exceptional customer service to drive sales, enhance the shopping experience, and increase loyalty sign-ups<br>
+          Led and supported a high-performing team while ensuring compliance with company policies and legal standards<br>
+          Maintained an engaging retail environment through customer assistance and garment care<br>
+          Developed strong communication and sales skills in a luxury retail setting<br>
+          Built personal relationships with customers, providing tailored assistance to enhance satisfaction and loyalty
+        </li>
+      </ul>
+      <h4>Projects</h4>
+      <ul>
+        <li><strong>Stock Screener using Python:</strong> Designed and implemented an intraday stock scanner that analyzes volume, price, and RSI indicators to generate a ranked list of top stocks</li>
+        <li><strong>Robotics Projects using Arduino:</strong> Designed and built an autonomous robot with capabilities including line following, obstacle detection, object manipulation, and traffic light-based navigation.</li>
+      </ul>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:sodhiraunaq@gmail.com" target="_blank" rel="noopener">
+          <span>📧</span> sodhiraunaq@gmail.com
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener">
+          <span>🔗</span> LinkedIn
+        </a>
+        <a class="contact-link" href="https://github.com/your-github" target="_blank" rel="noopener">
+          <span>🐙</span> GitHub
+        </a>
+      </div>
+    </section>
+  </div>
 </body>
 </html>
