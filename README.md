@@ -48,6 +48,30 @@ Core Areas:
 
 ---
 
+# Projects
+
+Here is a list of the completed projects in this portfolio:
+
+- **CarPricePrediction**: Built a regression model for Rusty Bargain used car service to predict vehicle market value using technical specifications and historical data, optimizing for prediction accuracy, inference speed, and training time using RandomForest, LightGBM, and DecisionTree algorithms.
+
+- **ChurnPrediction Project**: Developed a comprehensive churn prediction pipeline for telecom operator Interconnect that integrates customer contracts, personal information, and service data to predict which customers are likely to leave, evaluated using AUC-ROC and accuracy metrics.
+
+- **GoldRecovery_Pipeline**: Built a predictive model for gold ore flotation plant performance that estimates metallurgical recovery using operational parameters like feed characteristics, reagent levels, and flotation conditions, evaluated using sMAPE metric to optimize industrial process efficiency.
+
+- **Insurance_BenefitPrediction**: Implemented four machine learning solutions for Sure Tomorrow insurance company: customer similarity matching, benefit eligibility prediction, benefit count regression, and data masking algorithm to protect customer privacy without compromising model performance.
+
+- **MovieReviewDetector**: Trained a classification model for Film Junky Union to automatically detect negative movie reviews from IMBD data using NLP techniques, achieving an F1 score exceeding 0.85 for content filtering and categorization.
+
+- **SDA_Megapipeline**: Analyzed 500 Megaline telecom clients to compare prepaid plans (Surf vs Ultimate) and determine which generates more revenue based on customer behavior, call/text usage patterns, and revenue analysis to optimize advertising budgets.
+
+- **Telecom_ModelEvaluation**: Built multiple classification models (DecisionTree, RandomForest, LogisticRegression) to recommend the most suitable telecom plan for Megaline customers by analyzing their behavior and usage patterns.
+
+- **TimeSeries_Taxi**: Developed a time series forecasting model for Sweet Lift Taxi company to predict hourly taxi orders at airports during peak hours, with target RMSE of 48 or less to optimize driver allocation and service availability.
+
+- **VideoGameSales_Forecasting**: Analyzed video game sales patterns for Ice online store to identify success factors and trends that determine game performance, enabling data-driven advertising campaign planning and optimization.
+
+---
+
 # Project Portfolio
 
 <br>
