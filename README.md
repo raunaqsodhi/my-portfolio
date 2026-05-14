@@ -218,6 +218,175 @@ Built and evaluated multiple forecasting models to improve short-term operationa
 ![Pandas](https://img.shields.io/badge/Pandas-111827?style=flat-square&logo=pandas)
 ![NumPy](https://img.shields.io/badge/NumPy-111827?style=flat-square&logo=numpy)
 ![Scikit-Learn](https://img.shields.io/badge/scikit--learn-111827?style=flat-square&logo=scikitlearn)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-111827?style=flat-square&logo=matplotlib)
+
+### Tools & Concepts
+
+![Jupyter](https://img.shields.io/badge/Jupyter-111827?style=flat-square&logo=jupyter)
+![Machine Learning](https://img.shields.io/badge/Machine_Learning-111827?style=flat-square)
+![EDA](https://img.shields.io/badge/EDA-111827?style=flat-square)
+![Forecasting](https://img.shields.io/badge/Forecasting-111827?style=flat-square)
+![Visualization](https://img.shields.io/badge/Data_Visualization-111827?style=flat-square)
+
+</div>
+
+---
+
+# What These Projects Demonstrate
+
+```diff
++ Real-world business problem solving
++ End-to-end analytical workflows
++ Structured exploratory data analysis
++ Statistical reasoning and hypothesis testing
++ Predictive modeling and evaluation
++ Data-driven decision support
++ Machine learning implementation
++ Scalable Python-based analysis
+```
+
+---
+
+# Repository Goal
+
+This repository serves as a growing portfolio of applied analytics and machine learning projects demonstrating how data can be transformed into actionable business insights.
+
+The focus is not only on technical implementation, but also on:
+- analytical reasoning
+- business interpretation
+- model evaluation
+- practical decision support
+- scalable problem-solving workflows
+
+---
+
+<div align="center">
+
+### Built Through the TripleTen Data Science Program
+
+Focused on practical analytics, machine learning, and real-world business applications.
+
+</div>
+- Support marketing decision-making through analytics
+
+</td>
+<td width="35%">
+
+### Skills & Tools
+- Python
+- Pandas
+- NumPy
+- Data Cleaning
+- Aggregation
+- Statistical Analysis
+- Revenue Analysis
+- Visualization
+- Business Analytics
+
+</td>
+</tr>
+</table>
+
+---
+
+## 02 • Video Game Sales Forecasting
+
+<table>
+<tr>
+<td width="65%">
+
+### Project Summary
+Analyzed historical video game sales data to identify factors associated with commercial success in the gaming industry.
+
+The project explored:
+- Platform performance trends
+- Genre popularity
+- Regional sales behavior
+- User and critic review impact
+- ESRB rating influence
+- Product lifecycle analysis
+
+Conducted exploratory data analysis and trend evaluation to support strategic campaign planning and product forecasting for the online game retailer Ice.
+
+### Key Objectives
+- Identify patterns linked to successful game sales
+- Forecast market opportunities
+- Evaluate platform and genre performance
+- Support business strategy through historical trend analysis
+
+</td>
+<td width="35%">
+
+### Skills & Tools
+- Python
+- Pandas
+- EDA
+- Data Preprocessing
+- Trend Analysis
+- Business Analysis
+- Data Visualization
+- Statistical Reasoning
+
+</td>
+</tr>
+</table>
+
+---
+
+## 03 • Time Series Forecasting — Sweet Lift Taxi
+
+<table>
+<tr>
+<td width="65%">
+
+### Project Summary
+Developed a machine learning forecasting pipeline to predict hourly taxi demand using historical airport taxi order data.
+
+The workflow included:
+- Time-based resampling
+- Temporal feature engineering
+- Trend and seasonality analysis
+- Model training and comparison
+- Hyperparameter tuning
+- RMSE-based evaluation
+
+Built and evaluated multiple forecasting models to improve short-term operational planning and demand prediction accuracy.
+
+### Key Objectives
+- Forecast taxi orders for the next hour
+- Analyze temporal demand patterns
+- Improve prediction accuracy using ML models
+- Support operational resource planning
+
+</td>
+<td width="35%">
+
+### Skills & Tools
+- Python
+- Pandas
+- Time Series Analysis
+- Feature Engineering
+- Machine Learning
+- Forecasting
+- Model Evaluation
+- RMSE Optimization
+
+</td>
+</tr>
+</table>
+
+---
+
+# Technical Stack
+
+<div align="center">
+
+### Languages & Libraries
+
+![Python](https://img.shields.io/badge/Python-111827?style=flat-square&logo=python)
+![Pandas](https://img.shields.io/badge/Pandas-111827?style=flat-square&logo=pandas)
+![NumPy](https://img.shields.io/badge/NumPy-111827?style=flat-square&logo=numpy)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-111827?style=flat-square&logo=scikitlearn)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-111827?style=flat-square)
 
 ### Tools & Concepts
